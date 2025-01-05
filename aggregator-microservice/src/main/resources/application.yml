@@ -1,0 +1,10 @@
+server:
+    port: 8070
+
+temperature:
+    service-url: http://localhost:8090/reading/get
+    unit: C
+humidity:
+    service-url: http://localhost:8080/reading/get
+
+
