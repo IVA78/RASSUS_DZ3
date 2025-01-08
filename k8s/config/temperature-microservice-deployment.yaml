@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: temperature-microservice-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: temperature-microservice
+  template:
+    metadata:
+      labels:
+        app: temperature-microservice
+    spec:
+      containers:
+        - name: temperature-microservice
+          image: temperature-microservice:0.0.1-SNAPSHOT
+          ports:
+            - containerPort: 8090
+          volumeMounts:
+            - mountPath: /app/resources
+              name: readings-volume
+      volumes:
+        - name: readings-volume
+          configMap:
+            name: readings-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: temperature-microservice-service
+spec:
+  type: ClusterIP
+  selector:
+    app: temperature-microservice
+  ports:
+    - protocol: TCP
+      port: 8090
+      targetPort: 8090

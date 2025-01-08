@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aggregator-microservice-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aggregator-microservice
+  template:
+    metadata:
+      labels:
+        app: aggregator-microservice
+    spec:
+      containers:
+        - name: aggregator-microservice
+          image: aggregator-microservice:0.0.1-SNAPSHOT
+          ports:
+            - containerPort: 8070
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aggregator-microservice-service
+spec:
+  type: NodePort
+  selector:
+    app: aggregator-microservice
+  ports:
+    - protocol: TCP
+      port: 8070
+      targetPort: 8070
+      nodePort: 30070

@@ -1,0 +1,15 @@
+
+
+1.Kreiranje Config-Map-a za reading.csv (UPDATE FILE PATH)
+    kubectl create configmap readings-config --from-file=C:/Users/38595/Documents/GitHub/RASSUS_DZ3/k8s/data/readings.csv
+
+2. Kreiranje pod-ova
+    Pozicionirati se u RASSUS_DZ3\k8s> folder
+    Izvrsiti naredbe:
+        kubectl apply -f ./config/temperature-microservice-deployment.yaml
+        kubectl apply -f ./config/humidity-microservice-deployment.yaml
+        kubectl apply -f ./config/aggregator-microservice-deployment.yaml
+
+3. Primjer naredbe za proslijedjivanje porta
+    kubectl port-forward deployments/humidity-microservice-deployment 8080:8080
+    Alternativa: Proslijediti port u sucelju Rancher Desktopa

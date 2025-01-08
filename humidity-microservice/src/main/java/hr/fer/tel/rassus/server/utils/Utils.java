@@ -19,7 +19,7 @@ public class Utils {
 
         List<String> lines = null;
         try {
-            lines = Files.readAllLines(Paths.get("C:\\Users\\38595\\Documents\\GitHub\\RASSUS_DZ3\\temperature-microservice\\src\\main\\resources\\readings.csv"));
+            lines = Files.readAllLines(Paths.get("/app/resources/readings.csv"));
         } catch (IOException e) {
             System.out.println("Failed to read CSV");
         }

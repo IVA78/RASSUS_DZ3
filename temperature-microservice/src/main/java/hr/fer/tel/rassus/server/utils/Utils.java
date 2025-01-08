@@ -19,10 +19,16 @@ public class Utils {
 
         List<String> lines = null;
         try {
-            lines = Files.readAllLines(Paths.get("C:\\Users\\38595\\Documents\\GitHub\\RASSUS_DZ3\\temperature-microservice\\src\\main\\resources\\readings.csv"));
+            lines = Files.readAllLines(Paths.get("/app/resources/readings.csv"));
         } catch (IOException e) {
-            System.out.println("Failed to read CSV");
+            // Log the exception message for better debugging
+            System.out.println("Failed to read CSV: " + e.getMessage());
+            System.out.println("Path attempted: " + Paths.get("/app/resources/readings.csv").toAbsolutePath());
+            e.printStackTrace();
         }
+
+
+
 
         Long elapsedTimeInNanos = System.nanoTime() - Application.getStartTime();
         Long elapsedTimeInSeconds = elapsedTimeInNanos / 1000000000;
