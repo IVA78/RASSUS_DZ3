@@ -8,9 +8,13 @@ spec:
       image: busybox
       command: ["sleep", "3600"]
       volumeMounts:
-        - mountPath: /app/resources
-          name: readings-volume
+        - mountPath: /config
+          name: aggregator-volume
+          readOnly: true
   volumes:
-    - name: readings-volume
+    - name: aggregator-volume
       configMap:
-        name: readings-config
+          name: aggregator-config
+          items:
+              - key: application.yaml
+                path: application.yaml

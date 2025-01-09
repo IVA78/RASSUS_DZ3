@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: aggregator-config
+data:
+  application.yaml: |
+    server:
+      port: 8070
+    temperature:
+      service-url: http://temperature-microservice-service:8090/reading/get
+      unit: C
+    humidity:
+      service-url: http://humidity-microservice-service:8080/reading/get
+

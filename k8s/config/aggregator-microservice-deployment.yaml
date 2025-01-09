@@ -17,6 +17,20 @@ spec:
           image: aggregator-microservice:0.0.1-SNAPSHOT
           ports:
             - containerPort: 8070
+          volumeMounts:
+            - mountPath: /config
+              name: aggregator-volume
+              readOnly: true
+          env:
+            - name: SPRING_CONFIG_LOCATION
+              value: "file:/config/"
+      volumes:
+        - name: aggregator-volume
+          configMap:
+            name: aggregator-config
+            items:
+              - key: application.yaml
+                path: application.yaml
 ---
 apiVersion: v1
 kind: Service
