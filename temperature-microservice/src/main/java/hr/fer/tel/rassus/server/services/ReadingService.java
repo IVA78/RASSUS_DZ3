@@ -7,6 +7,8 @@ import hr.fer.tel.rassus.server.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 
@@ -33,6 +35,15 @@ public class ReadingService {
         } catch(Exception e) {
             return null;
         }
+    }
+
+    public List<ReadingDTO> getAllReadings() {
+
+        List<ReadingDTO> readingDTOList = readingRepository.findAll();
+        readingRepository.findAll();
+
+        return readingDTOList;
+
     }
 
 }
