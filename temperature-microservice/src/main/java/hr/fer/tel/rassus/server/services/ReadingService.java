@@ -26,10 +26,10 @@ public class ReadingService {
             readingRepository.save(newReading);
 
             //generiranje mjerne jedinice
-            Random random = new Random();
-            String unit = random.nextBoolean() ? "C" : "K";
+            //Random random = new Random();
+            //String unit = random.nextBoolean() ? "C" : "K";
 
-            ReadingTransferDTO newTransferReading = new ReadingTransferDTO("Temperature", unit, newReading.getTemperature());
+            ReadingTransferDTO newTransferReading = new ReadingTransferDTO("Temperature", "C", newReading.getTemperature());
 
             return newTransferReading;
         } catch(Exception e) {

@@ -53,10 +53,12 @@ public class ReadingService {
             //pretvaranje u odgovarajucu mjernu jedinicu
             if(temperatureReading.getUnit().equals("C") && temperatureDefaultUnit.equals("K")){
                 temperatureReading.setValue(temperatureReading.getValue() + 273.15);
+                temperatureReading.setUnit("K");
             }
 
             if(temperatureReading.getUnit().equals("K") && temperatureDefaultUnit.equals("C")){
                 temperatureReading.setValue(temperatureReading.getValue() - 273.15);
+                temperatureReading.setUnit("C");
             }
 
 
