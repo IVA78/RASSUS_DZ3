@@ -1,7 +1,8 @@
+0.Sve slike za mikroservice izgrađene pomoću ./gradlew bootBuildImage
 
-
-1.Kreiranje Config-Map-a za reading.csv (UPDATE FILE PATH)
+1.Kreiranje Config-Map-a za readings.csv (UPDATE FILE PATH)
     kubectl create configmap readings-config --from-file=C:/Users/38595/Documents/GitHub/RASSUS_DZ3/k8s/data/readings.csv
+    Alternativa: kubectl apply -f ./config/readings-config.yaml
 
 2. Kreiranje pod-ova
     Pozicionirati se u RASSUS_DZ3\k8s> folder
@@ -13,3 +14,5 @@
 3. Primjer naredbe za proslijedjivanje porta
     kubectl port-forward deployments/humidity-microservice-deployment 8080:8080
     Alternativa: Proslijediti port u sucelju Rancher Desktopa
+
+Aplikacija je dostupna na portu 30070. Dohvat očitanja pomoću: http://localhost:30070/reading/get
